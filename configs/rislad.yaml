@@ -1,0 +1,38 @@
+paths:
+  project_root: .
+  output_dir: outputs/rislad/evidence
+runtime:
+  device: cuda:0
+  seed: 123
+  amp: true
+  amp_dtype: bfloat16
+model:
+  dim: 256
+  geometry_dim: 7
+  hidden: 192
+  unknown_weight: 1.0
+train:
+  epochs: 30
+  batch_size: 4
+  num_workers: 4
+  lr: 0.0002
+  weight_decay: 0.05
+  grad_clip: 1.0
+  warmup_epochs: 1
+  save_every: 1
+loss:
+  belief_temperature: 0.1
+  prior_weight: 0.6666666666666666
+  posterior_weight: 1.3333333333333333
+method_rules:
+  one_posterior: true
+  one_learned_evidence_scorer: true
+  analytic_look: pairwise_mask_disagreement_plus_unknown_discovery
+  additive_update: true
+  open_set_hypothesis: true
+  posterior_update_version: candidate_belief_v1
+inference:
+  posterior_temperature: 1.2
+  unknown_weight: 1.0
+  grid_cells: 24
+  batch_size: 2

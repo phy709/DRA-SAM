@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sam3"
+version = "0.1.0"
+description = "SAM3-I runtime used by DRA-SAM"
+requires-python = ">=3.10"
+readme = "README.md"
+license = {file = "LICENSE"}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sam3*"]
+namespaces = true
+
+[tool.setuptools.package-data]
+"sam3.train" = ["configs/**/*.yaml"]
